@@ -1,7 +1,6 @@
 body {
-  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  background: linear-gradient(135deg, #9D00FF 0%, #7A00C6 100%);
   min-height: 100vh;
-  margin: 0;
 }
 
 body.fade-out {
@@ -16,27 +15,51 @@ body.fade-out {
   font-family: 'Arial', sans-serif;
   font-size: 30px;
   font-weight: bold;
-  color: #f0e4d0;
-  background-color: #991914;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  /* Updated to a vibrant purple gradient */
+  background: linear-gradient(135deg, #b026ff, #7A00C6); 
+  padding: 14px 32px;
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px rgba(60, 0, 100, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08);
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #ffc2d1;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Instructions Panel */
+.candle-count-display::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.candle-count-display span {
+  font-weight: bold;
+  color: #FFD84D;
+}
+
+/* Instructions Panel — now a loose wrapper; each step is its own glass panel */
 .instructions-panel {
-  background-color: rgba(249, 92, 92, 0.9);
-  border: 2px solid #ffc2d1;
-  border-radius: 15px;
-  padding: 25px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   max-width: 450px;
   min-width: 380px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
+  box-shadow: none;
   animation: fadeInLeft 1s ease-out;
   position: fixed;
   left: 20px;
@@ -46,20 +69,48 @@ body.fade-out {
 }
 
 .instructions-panel h3 {
-  color: #f0e4d0;
+  color: #ffffff;
   font-family: 'Arial', sans-serif;
   font-size: 22px;
   font-weight: bold;
   text-align: center;
   margin: 0 0 15px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .instruction-step {
-  display: flex;
+  ddisplay: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #b026ff, #7A00C6); /* Changed to a purple gradient */
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    0 8px 24px rgba(50, 0, 90, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08);
   animation: slideInLeft 0.6s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.instruction-step:last-child {
+  margin-bottom: 0;
+}
+
+/* soft top-lit sheen so each card reads as glass, not flat color */
+.instruction-step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+  pointer-events: none;
 }
 
 .instruction-step:nth-child(2) { animation-delay: 0.2s; }
@@ -67,8 +118,8 @@ body.fade-out {
 .instruction-step:nth-child(4) { animation-delay: 0.6s; }
 
 .step-number {
-  background: linear-gradient(135deg, #991914, #AD030F);
-  color: #f0e4d0;
+  background: linear-gradient(135deg, #9D00FF, #c77dff);
+  color: #ffffff;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -78,16 +129,16 @@ body.fade-out {
   font-weight: bold;
   font-size: 16px;
   margin-right: 15px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 8px rgba(157, 0, 255, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4);
   flex-shrink: 0;
 }
 
 .step-text {
-  color: #f0e4d0;
+  color: #ffffff;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes fadeInLeft {
@@ -110,11 +161,6 @@ body.fade-out {
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.candle-count-display span {
-  font-weight: bold;
-  color: #AD030F;
 }
 
 .cake {
@@ -296,36 +342,71 @@ body.fade-out {
 }
 
 .nav-button {
-  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-  color: white;
-  border: none;
-  padding: 15px 30px;
+  /* Updated to purple gradient */
+  background: linear-gradient(135deg, #b026ff, #7A00C6);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  padding: 15px 34px;
   font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 25px;
+  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  box-shadow:
+    0 8px 28px rgba(60, 0, 100, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
   animation: pulse 2s infinite;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lighter purple highlight on hover */
+.nav-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #c77dff, #9D00FF);
+  box-shadow:
+    0 12px 32px rgba(80, 0, 130, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.nav-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+  pointer-events: none;
 }
 
 .nav-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-  background: linear-gradient(45deg, #ff8e8e, #ffb3b3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.15));
+  box-shadow:
+    0 12px 32px rgba(80, 0, 130, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12);
 }
 
 .nav-button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+  box-shadow:
+    0 6px 16px rgba(60, 0, 100, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
-  50% { box-shadow: 0 4px 25px rgba(255, 107, 107, 0.5); }
-  100% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
+  0% { box-shadow: 0 8px 24px rgba(60, 0, 100, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5); }
+  50% { box-shadow: 0 8px 34px rgba(157, 0, 255, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.5); }
+  100% { box-shadow: 0 8px 24px rgba(60, 0, 100, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5); }
 }
 
 .footer {
@@ -404,4 +485,3 @@ body.fade-out {
     margin-top: 100px;
   }
 }
-
