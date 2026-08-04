@@ -132,7 +132,7 @@ document.querySelectorAll('a[href]').forEach(link => {
     });
   });
 
-// Hide the instructions panel when the close button is clicked
+  // Hide the instructions panel when the close button is clicked
 document.getElementById('closeBtn').addEventListener('click', function() {
   document.getElementById('todoPanel').style.display = 'none';
 });

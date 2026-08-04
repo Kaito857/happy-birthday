@@ -9,7 +9,7 @@
 
 /* Fixed: Remove the dot and use the same gradient as your first page */
 body {
-  background: linear-gradient(100deg, #ff5252, #ffbaba);
+  background: linear-gradient(100deg, #9d52ff, #8327da);
   margin: 0;
   overflow: hidden; /* Prevents scrolling issues */
 }

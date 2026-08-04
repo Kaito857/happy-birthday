@@ -9,7 +9,7 @@
 
 /* Fixed: Remove the dot and use the same gradient as your first page */
 body {
-  background: linear-gradient(100deg, #ff5252, #ffbaba);
+  background: linear-gradient(100deg, #9d52ff, #8327da);
   margin: 0;
   overflow: hidden; /* Prevents scrolling issues */
 }
@@ -155,15 +155,59 @@ h1{
   position: relative;
 }
   .btn {
-  background: linear-gradient(0deg, #ff2a2a, #ffbaba);
+  background: linear-gradient(135deg, #b026ff, #7A00C6);
   color: white;
-  border: none;
-  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  padding: 12px 30px;
   border-radius: 50px;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+  margin-top: 24px;
+  box-shadow:
+    0 8px 28px rgba(60, 0, 100, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
   text-decoration: none;
+  display: inline-block;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Adds the glossy liquid top highlight */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* Add spacing between buttons */
+.btn:not(:last-child) {
+  margin-right: 30px;
+}
+
+/* Lighter purple and stronger shadow on hover */
+.btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #c77dff, #9D00FF);
+  box-shadow:
+    0 12px 32px rgba(80, 0, 130, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 16px rgba(60, 0, 100, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
