@@ -78,6 +78,33 @@ body.fade-out {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
+/* Close Button Styles */
+.close-btn {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  background: linear-gradient(135deg, #9D00FF, #7A00C6);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(60, 0, 100, 0.4);
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #c77dff, #9D00FF);
+}
+
 .instruction-step {
   ddisplay: flex;
   align-items: center;
