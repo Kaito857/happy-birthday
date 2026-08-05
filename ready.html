@@ -20,9 +20,9 @@
         }
 
         body.fade-out {
-  opacity: 0;
-  transition: opacity 0.6s;
-}
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
 
         #app {
             position: relative;
@@ -65,56 +65,57 @@
             transform: translateY(0);
             pointer-events: all;
         }
-.btn {
-  background: linear-gradient(135deg, #b026ff, #7A00C6);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow:
-    0 8px 28px rgba(60, 0, 100, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.5),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-}
 
-/* Glass shine top sheen layer */
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
-  pointer-events: none;
-}
+        .btn {
+            background: linear-gradient(135deg, #b026ff, #7A00C6);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.42);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow:
+                0 8px 28px rgba(60, 0, 100, 0.45),
+                inset 0 1px 1px rgba(255, 255, 255, 0.5),
+                inset 0 -1px 1px rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
 
-.btn:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #c77dff, #9D00FF);
-  box-shadow:
-    0 12px 32px rgba(80, 0, 130, 0.55),
-    inset 0 1px 1px rgba(255, 255, 255, 0.6),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.12);
-}
+        /* Glass shine top sheen layer */
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+            pointer-events: none;
+        }
 
-.btn:active {
-  transform: translateY(0);
-  box-shadow:
-    0 6px 16px rgba(60, 0, 100, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.4);
-}
+        .btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #c77dff, #9D00FF);
+            box-shadow:
+                0 12px 32px rgba(80, 0, 130, 0.55),
+                inset 0 1px 1px rgba(255, 255, 255, 0.6),
+                inset 0 -1px 1px rgba(255, 255, 255, 0.12);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow:
+                0 6px 16px rgba(60, 0, 100, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.4);
+        }
 
         .text-gradient {
             background: linear-gradient(135deg, #ec4899, #f43f5e, #f59e0b);
@@ -131,19 +132,15 @@
             0% {
                 transform: scale(1);
             }
-
             25% {
                 transform: scale(1.1);
             }
-
             50% {
                 transform: scale(1);
             }
-
             75% {
                 transform: scale(1.1);
             }
-
             100% {
                 transform: scale(1);
             }
@@ -197,6 +194,44 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .step {
+                width: 82% !important; /* Reduces card width so it doesn't touch screen edges */
+                max-width: 320px !important; /* Sets a neat, compact maximum width for mobile */
+                padding: 20px 16px !important; /* Reduces inner spacing to fit content comfortably */
+                margin: auto !important;
+                left: 0;
+                right: 0;
+            }
+            
+            .emoji {
+                font-size: 2rem !important; /* Slightly scales down heart icon */
+                margin-bottom: 8px !important;
+            }
+            
+            h1.text-4xl {
+                font-size: 1.75rem !important; /* Reduces heading text size */
+                margin-bottom: 12px !important;
+            }
+
+            p.text-xl {
+                font-size: 0.95rem !important; /* Scales text down so it fits in a narrower card */
+                line-height: 1.4 !important;
+                margin-bottom: 8px !important;
+            }
+
+            .btn {
+                padding: 8px 18px !important; /* Compact button sizing */
+                font-size: 0.85rem !important;
+                margin-top: 12px !important;
+            }
+
+            /* Keeps two side-by-side buttons aligned nicely inside the narrower card */
+            .btn:not(:last-child) {
+                margin-right: 8px !important; 
+            }
         }
     </style>
 </head>
