@@ -163,3 +163,45 @@ h1{
   text-decoration: none;
 }
 
+@media (max-width: 768px) {
+  .slider-images {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Allows swiping through images */
+    overflow-y: hidden;
+    width: 100vw;
+    padding: 0 20px;
+    gap: 15px;
+    /* Hide scrollbar for a cleaner look */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  }
+  
+  .slider-images::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slider-img {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 280px !important;
+  }
+
+  .slider-img.active {
+    width: 75vw !important; /* Fits perfectly within the mobile viewport */
+    height: 380px !important;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+  
+  .details p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .details h2 {
+    font-size: 20px;
+  }
+}

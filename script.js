@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let average = sum / bufferLength;
 
-    return average > 50; //ETO CHANGEEEEEE
+    return average > 80; //ETO CHANGEEEEEE
   }
 
   function blowOutCandles() {
@@ -82,24 +82,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices
-      .getUserMedia({ audio: true })
-      .then(function (stream) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioContext.createAnalyser();
-        microphone = audioContext.createMediaStreamSource(stream);
-        microphone.connect(analyser);
-        analyser.fftSize = 256;
-        setInterval(blowOutCandles, 200);
-      })
-      .catch(function (err) {
-        console.log("Unable to access microphone: " + err);
-      });
-  } else {
-    console.log("getUserMedia not supported on your browser!");
+  let micInitialized = false;
+
+  function initMic() {
+    if (micInitialized) return; // Prevent initializing multiple times
+    
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then(function (stream) {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          analyser = audioContext.createAnalyser();
+          microphone = audioContext.createMediaStreamSource(stream);
+          microphone.connect(analyser);
+          analyser.fftSize = 256;
+          setInterval(blowOutCandles, 200);
+          micInitialized = true;
+        })
+        .catch(function (err) {
+          console.log("Unable to access microphone: " + err);
+        });
+    } else {
+      console.log("getUserMedia not supported on your browser!");
+    }
   }
-});
+
+  // Mobile browsers require a user gesture to start AudioContext and Mic access
+  document.body.addEventListener('click', initMic, { once: true });
+  document.body.addEventListener('touchstart', initMic, { once: true });
+}); // Keep your existing DOMContentLoaded closing bracket here
 
 function triggerConfetti() {
   confetti({
